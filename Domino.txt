@@ -1,0 +1,172 @@
+
+load design -d oadata  刷新数据库命令
+sh ta  刷新当前
+
+重启整个服务器：RES SER [在后台远程重启服务器]
+重启HTTP：      Tell HTTP Quit [关闭HTTP]-> Load HTTP [启动HTTP] 
+重启HTTP：      Tell HTTP Restart [重启HTTP]
+
+roadcast message   向该服务器的用户广播消息
+Broadcast message usernames 向该服务器的某一用户广播消息
+Dbcache Flush     关闭当前在数据库高速缓存中打开的所有数据库。使用此命令可以在高速缓存中维护数据库，例如：备份或恢复数据库。
+Drop username     关闭一个或多个服务器会话。如果希望亲眼确认哪些会话已被关闭，则必须在服务器的 NOTES.INI 文件中输入 Log_Sessions=1 的设置。
+Drop "username"    关闭在指定用户名下运行的当前会话
+Drop " username1 " " username2 " 关闭在用户username1和username2下运行的会话
+Drop All      关闭所有服务器会话
+Exit     关闭服务器，注：不能用远程控制台重起服务器
+Hangup portname     挂断指定端口
+Help   显示服务器命令列表，并附有每个命令的简短描述、参数（如果有的话）和正确的语法。
+Load   启动服务器外接程序
+Load Fixup   加载并运行 Fixup 服务器任务
+Load Object Info OBJECT.NSF 加载并运行共享邮件管理者，并传递执行 Info 任所需的参数
+
+Load pop3
+Load router
+Load smtp
+
+Load http               加载web服务
+Load decs               加载外部数据连接服务
+Load calconn            加载日历管理器
+Load event              加载事件管理器
+Load sched              加载日程安排管理器
+Load stats              加载统计信息收集管理器
+Load maps               加载路由表(路由拓扑结构)管理器
+Load Router             加载邮件路由管理器
+Load Replica            加载复制管理器
+Load Update             加载更新管理器
+Load Amgr               加载代理管理器
+Load AdminP             加载管理进程
+Pull servername   强制与指定服务器进行单向仅拉入复制。
+Pull servername databasename    强制从指定服务器单向仅拉入复制指定的数据库文件。
+Push servername   强制与指定服务器进行单向仅推出复制。
+Push servername databasename 强制将指定的数据库文件单向仅推出复制到指定服务器。
+Replicate  初始化与指定服务器之间的双向复制强制在两个服务器之间进行复制。发起复制的服务器（也就是当前正在使用的服务器）首先将其他服务器上的更改拉入进来，然后让将它的更改推出到其他服务器。使用该命令可以快速传递数据库的更新，或者解决复制或通讯疑难问题。
+Replicate servername　在本地服务器和指定服务器之间发起复制。服务器控制台显示指明复制进行的起始时间的信息。
+Replicate servername databasename   在本地服务器和指定服务器之间发起，指定数据库文件的复制。
+
+Restart server   禁用当前服务器，然后在短暂延迟后重新启动服务器。
+
+Restart Port portname   禁用指定端口上的事务（或消息）然后在短暂延迟后重新启动端口。此命令使您不用停止 Domino 服务器就可以停止并启动端口。
+Route servername   使用特定服务器发起邮件路由。初始化与指定服务器的待发邮件的未安排邮件传送。
+Set Configuration setting   在 NOTES.INI 文件中增加或更改设置。
+Set Secure currentpassword  口令保护Domino服务器控制台如果不输入口令，则无法使用 Load、Tell、Exit、Quit 和 Set Configuration 服务器命令，也无法使用那些不是通过“Domino 目录”中的“程序”文档或 NOTES.INI 文件来自动运行的程序。除非使用相同口令再次输入 Set Secure 命令来清除口令，否则控制台的安全性将保持有效。
+Set Secure abracadabra  若当前没有有效口令，请设置口令保护控制台。在本例中新口令为“abracadabra”。如果控制台已经受口令（这里为“abracadabra”）保护，请再次输入带有此口令的 Set Secure 命令，来清除该口令。
+Set Secure abracadabra sesame 将现有口令“abracadabra”更改为“sesame”。
+Set Statistics statisticname  重设累计的统计信息。Statisticname 是命名待重设的统计信息所需参数。此参数不能使用通配符 (*)。
+Show Cluster    本地服务器的群集名称缓存区，它包括一个所有群集成员及其状态的列表
+Show Config  xxx        显示Notes.ini文件中参数设置的值
+Show Database           显示指定数据库的文档和视图信息
+Show Directory          在Notes目录中显示每个数据库的信息
+Show Disk               显示全部服务器驱动器的磁盘释放统计信息
+Show Memory             显示此数据库的内存统计信息
+Show Performance        触发性能统计信息的一分钟显示
+Show Allports           显示服务器上的所有启用或禁用端口的配置。
+Show Port               显示指定端口的信息
+Show Schedule           显示安排但未执行的命令
+Show Server             仅显示核心服务器状态信息
+Show Tasks              显示运行在服务器上的所有任务的状态信息
+Show UserS              显示所有活动会话的使用信息
+Stop Port Portname  禁用端口禁用指定端口的事务（或消息）。此命令允许更改端口，而且不用停止 Domino server 就可以立即生效。
+Stop Port TCP       禁用名为 TCP 的端口。
+Start Port portname 启用指定端口的事务（或消息）。
+Start Port TCP      启用名为 TCP 的端口
+Tell serverprogram  将命令串发送给任务。
+Tell Router Quit    只关闭 Router 任务。服务器上其他所有任务继续运行。
+Tell Adminp Process All 处理所有新的和更改过的立即、时间间隔、每天和延迟的请求。该命令并不重设计时请求的执行时间。
+Tell Adminp Process Daily   处理下列请求：所有新的和更改过的每日请求，以更新“Domino 目录”中的“个人”文档。 任何突出的 Rename Person in Unread List 请求。
+Tell Adminp Process Delayed 处理所有新的和修改过的延迟请求。这些请求通常依照“服务器”文档中的“开始执行日期”和“开始执行时间”设置运行。
+Tell Adminp Process Interval   处理所有立即请求，以及所有依照“服务器”文档中的“时间间隔”设置执行的请求。
+Tell Adminp Process New 处理所有新请求。
+Tell Adminp Process People  处理所有新的和修改过的请求，以更新“Domino 目录”中的“个人”文档。
+Tell Adminp Process Time    处理所有新的和修改过的请求来删除未链接的邮件文件。
+Tell Adminp Show Databases  显示（并在服务器的日志文件中记录）下列信息：特定的管理服务器更新的数据库。在所更新数据库中更新了“读者”和“作者”域的位置。没有为其指定管理服务器的数据库。
+Tell Adminp Quit    关闭服务器的 Administration Process。
+Tell Amgr Pause     暂停代理的日程安排。
+Tell Amgr Resume    继续代理的日程安排。
+Tell Amgr Schedule  显示预定在当天运行所有代理的时间安排表。此外，该命令也显示代理触发类型、代理预定的运行时间、代理名称和代理运行于其上的数据库名称。检查 Agent Manager 的日程安排表可查到代理是否在 Agent Manager 队列中等候。
+Agent Manger 队列：
+E = 能够运行的代理  S = 预设运行的代理   V = 等待事件发生的事件触发代理
+触发类型：
+S = 预设运行的代理  M = 新邮件触发代理    U = 新建 / 更新文档触发代理
+Tell Amgr Status    快速显示 Agent Manager 队列并且在“服务器”文档中显示“代理管理器”的设置。
+Tell Amgr Quit      关闭服务器的 Agent Manager。
+Tell Clrepl Log     立即在服务器日志 (LOG.NSF) 中记录信息，而不是等待下一个日志时间间隔。
+Tell Clrepl Quit    关闭服务器上 Cluster Replicator 的所有实例。为了防止 Clrepl 任务在以后的会话中运行，那么请删除 NOTES.INI 文件的 ServerTasks 设置中所有 Clrepl 任务实例。禁用服务器的 Clrepl 任务只能防止此服务器到其他服务器的复制，而不防止其他群集服务器向此服务器进行复制。
+Tell NNTP Newgroup groupname   新建一个新闻组，使用此命令创建在新闻事务期间没被自动创建的新闻组。
+Tell NNTP Newgroup Delete group_name(s) 删除指定新闻组。
+Tell NNTP Newgroup groupname pathname   提醒 NNTP 将带有指定群组名和路径名的群组添加到它的当前高速缓存列表。通过模板创建群组时使用此命令。
+Tell NNTP print cache list  打印当前 NNTP 讨论群组和相应 Notes 数据库的列表。
+Tell NNTP Print config  打印当前 NNTP 配置变量和他们的值的列表。
+Tell NNTP Quit          终止 NNTP 任务。
+Tell NNTP Reset servername  重新设置新闻事务，以便此服务器的下次输入或输出可以象首次输入或输出一样对文章进行推出或拉入。
+Tell NNTP Show Config   显示 NNTP 服务器配置设置，此设置在“服务器”文档的 NNTP 区段中进行指定。
+Tell NNTP Show Groups   显示服务器的新闻组的名称和路径。
+Tell LDAP reloadschema  更新 LDAP 服务器上的目录模式以反映由定制“Domino 目录”而引起的更改。
+Tell LDAP exportschema  建立或更新 Domino LDAP Schema 数据库。
+Tell Router Delivery Stats  显示 Router 邮递的统计信息。
+Tell Router Compact     压缩 MAIL.BOX 并清理开放的 Router 队列。
+Tell Router Show Queues 显示发向指定服务器的传送队列中的邮件。
+Tell Router Exit            终止服务器上的 Router 任务。
+Tell Router Use databasename        创建指定的共享邮件数据库，并将 NOTES.INI 的 Shared_Mail 的值设置为 2，这样就能为了将邮件传送和邮递到该服务器而启用共享邮件数据库。
+Tell Router Quit            关闭服务器的 Router 任务。
+Tell Sched Stats            显示空闲时间数据库中预定和约会的总数。
+Tell Sched Show username    在服务器控制台上显示指定用户的时间安排。使用此命令来调查空闲时间数据库中存在的问题。
+Tell Sched Validate         立即校验服务器上的空闲时间数据库。
+Tell Sched Validate username    校验指定用户的信息。
+Tell Sched Quit     关闭服务器上的 Schedule Manager 任务。
+Tell Collector Collect  在所有指定服务器上运行统计信息收集，并生成统计信息报告。
+Tell Collector Quit     关闭服务器的 Collect 任务。
+Tell Web Help           列出所有的 Web Navigator 服务器控制台命令。
+Tell Web Refresh        刷新所有的 Web Navigator 的全局设置。如果在运行 Web 服务器任务时编辑了“管理”文档，就需要使用这个命令。
+Tell Web Quit           停止所有运行 Web Navigator 的复本。
+Tell HTTP Restart       更改下列各项中的设置来刷新 Web 服务器：
+为用作“Web 服务器”而设的“服务器”文档。
+“Domino 目录”中的“文件保护”、“虚拟服务器”和“URL 映射”文档。影响 HTTP 服务器任务的 NOTES.INI 文件。
+HTTPD.CNF 和 BROWSER.CNF 文件。
+对 Java 服务器小程序或 servlet.properties 文件的更改。
+Tell HTTP Show File Access  显示计算机及虚拟服务器上有关文件系统保护的信息。
+Tell HTTP Show Security 显示关于 SSL 和服务器密钥集文件的信息（包括关于服务器是否启动 SSL 的信息）。如果在计算机上设置了虚拟服务器，则会显示有关虚拟服务器的 SSL 信息。
+Tell HTTP Show Users 显示使用基于会话验证进行用户验证的用户名、IP 地址和会话的过期时间，基于会话的验证只使用基本验证。
+Tell HTTP Show Virtual Servers  显示运行于计算机上的虚拟服务器的列表。
+Tell HTTP Quit       关闭 Web Server 任务。
+Trace servername     使用 Trace 命令测试与服务器的连接。此命令显示每个服务器跳段的详细信息，并且有助于解决网络连接的疑难问题。
+Trace portname !!! servername   测试与服务器的连接跟踪指定的端口。
+
+==============================================================================================   
+命令        描述   
+Broadcast   向该服务器上的指定用户或所有用户发送消息。   
+Dbcache   Flush   关闭当前在数据库高速缓存中打开的所有数据库。   
+Drop   关闭一个或多个服务器会话。   
+Exit   关闭服务器。该命令等同于   Quit。   
+Help   显示服务器命令列表，并附有每个命令的简短描述、参数（如果有的话）及正确语法。   
+Load   加载并运行服务器上的指定服务器任务或程序。   
+Pull   强制进行从指定服务器到本地服务器的单向复制。   
+Push   关闭服务器。该命令等同于   Exit   服务器命令。   
+Quit     
+Replicate   强制在两个服务器（输入该命令的服务器和指定的服务器）之间进行复制。   
+  Restart   Port   禁用指定端口上的事务（或消息）然后在短暂延迟后重新启动端口。   
+  Restart   Server   关闭服务器，并在短暂间歇后重新启动服务器。   
+  Route   使用特定服务器发起邮件路由。   
+  Set   Configuration xxx   在   NOTES.INI   文件中增加或更改设置。   
+  Set   Secure   为控制台设置口令保护。   
+  Set   Statistics   重设累计的统计信息。   
+  Show   Allports   显示服务器上所有启用和禁用端口的配置。   
+  Show   Cluster   显示本地服务器的群集名高速缓存。   
+  Show   Configuration   显示   NOTES.INI   设置的当前值。     
+  Show   Directory   列出数据目录中的所有数据库文件并识别数据库的多个复本。   
+  Show   Diskspace   显示磁盘驱动器（Windows   NT   或   OS/2）或文件系统   (UNIX)   上可用的空间大小（以字节为单位）。   
+  Show   Memory   用于   OS/2。   
+  Show   Performance   显示   Domino   服务器运行时每分钟的用户/事务值。   
+  Show   Port   显示信息传输和错误的统计信息，以及网络适配卡或通讯端口使用的资源。   
+  Show   Schedule   显示服务器任务下次运行时间。   
+  Show   Server   显示服务器的状态信息。   
+  Show   Stat   显示磁盘空间、内存、邮件、复制和网络活动中的一项或多项服务器统计信息。     
+  Show   Tasks   显示服务器名称、Domino   程序目录路径以及活动的服务器任务的状态。   
+  Show   Users   显示已与服务器建立了会话的所有用户的列表。   
+  Show   Transactions   对于每种类型的事务，显示   NRPC   事务总数、最短和最长的事务持续时间、执行所有事务的总时间以及执行事务的平均时间。   
+  Start   Port   启用指定端口的事务（或消息）。   
+  Stop   Port   禁用指定端口的事务（或消息）。   
+Tell   向服务器程序或任务提交命令。   
+Trace   测试到服务器的连接。   
+
+【1】tell http q  关闭http服务，同时可以看到哪些HTTP线程堵塞导致Domino服务器卡住了
